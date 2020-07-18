@@ -1,14 +1,12 @@
 package com.example.mybatis.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.example.mybatis.entity.User;
 import com.example.mybatis.service.IUserService;
+import com.example.mybatis.vo.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * @Description
@@ -21,18 +19,11 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
-    @RequestMapping("/like")
+    @RequestMapping("/test")
     @ResponseBody
-    public IPage<User> like() {
-        IPage<User> like = userService.like();
-        return like;
-    }
-
-    @RequestMapping("/equalTo")
-    @ResponseBody
-    public IPage<User> equalTo() {
-        IPage<User> equalTo = userService.equalTo();
-        return equalTo;
+    public IPage<UserInfo> test() {
+        IPage<UserInfo> test = userService.test();
+        return test;
     }
 
 }

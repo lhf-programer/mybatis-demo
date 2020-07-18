@@ -23,7 +23,7 @@ spring:
     default-property-inclusion: non_null
   datasource:
     name: cloud
-    url: jdbc:mysql://192.168.42.128:3306/mybatis_demo?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://192.168.0.113:3306/mybatis_demo?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
     username: root
     password: 123456
     # 使用druid数据源

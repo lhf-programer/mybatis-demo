@@ -1,5 +1,6 @@
 package com.example.mybatis.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -7,6 +8,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.mybatis.entity.User;
 import com.example.mybatis.mapper.UserMapper;
 import com.example.mybatis.service.IUserService;
+import com.example.mybatis.vo.UserInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -24,22 +26,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     private UserMapper userMapper;
 
     @Override
-    public IPage<User> like() {
-        Page<User> page = new Page(1, 10);
+    public IPage<UserInfo> test() {
+        Page<UserInfo> page = new Page(1, 10);
         List<OrderItem> orderItems = Arrays.asList(OrderItem.desc("id"));
         page.setOrders(orderItems);
 
-        IPage<User> users = userMapper.selectLike(page, new User("1", "zhangsan"));
-        return users;
+        QueryWrapper<User> queryWrapper = new QueryWrapper();
+        queryWrapper.select(new String[] {"id as id", "name as username"});
+
+        return userMapper.selectTest(page, queryWrapper);
     }
 
-    @Override
-    public IPage<User> equalTo() {
-        Page<User> page = new Page(1, 10);
-        List<OrderItem> orderItems = Arrays.asList(OrderItem.desc("id"));
-        page.setOrders(orderItems);
-
-        IPage<User> users = userMapper.selectEqualTo(page, new User("1", "zhangsan"));
-        return users;
-    }
 }
